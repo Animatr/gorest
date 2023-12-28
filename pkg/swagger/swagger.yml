@@ -1,0 +1,59 @@
+consumes:
+- application/json
+info:
+  description: HTTP server in Go with Swagger endpoints definition.
+  title: gorest-api
+  version: 0.1.0
+produces:
+- application/json
+schemes:
+- http
+swagger: "2.0"
+
+paths:
+  /price:
+    get:
+      operationId: checkPrice
+      produces:
+      - text/plain
+      responses:
+        '200':
+          description: OK message.
+          schema:
+            type: string
+            enum:
+            - OK
+
+  /product/{product}:
+    get:
+      description: Returns title of to the product!
+      parameters:
+        - name: product
+          in: path
+          type: string
+          required: true
+          description: The name of the product.
+      responses:
+        200:
+          description: Returns the product title.
+          schema:
+            type: string
+        400:
+          description: Invalid characters in "product" were provided.
+
+  /image/{product}:
+    get:
+      description: Return the product Image.
+      produces:
+      - image/png
+      parameters:
+        - name: product
+          in: path
+          type: string
+          required: true
+          description: The name of the product to display.
+      responses:
+        200:
+          description: Returns the product.
+          schema:
+            type: file

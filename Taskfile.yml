@@ -5,6 +5,19 @@ tasks:
         desc: Build the app
         cmds:
         - GOFLAGS=-mod=mod go build -o bin/go-rest-api internal/main.go 
+        # - GOOS=windows GOARCH=386 go build -o bin/go-rest-api-win-386 internal/main.go
+        - GOOS=windows GOARCH=amd64 go build -o bin/go-rest-api-win-64 internal/main.go
+        # - GOOS=linux GOARCH=386 go build -o bin/go-rest-api-linux-386 internal/main.go
+        - GOOS=linux GOARCH=amd64 go build -o bin/go-rest-api-linux-64 internal/main.go
+        # - GOOS=darwin GOARCH=386 go build -o bin/go-rest-api-darwin-386 internal/main.go
+        # - GOOS=darwin GOARCH=amd64 go build -o bin/go-rest-api-darwin-64 internal/main.go
+        # - GOOS=darwin GOARCH=arm64 go build -o bin/go-rest-api-darwin-arm64 internal/main.go
+
+
+    build-win32:
+      desc: Build the app for win32
+      cmds:
+      - 
 
     run: 
         desc: Run the app
